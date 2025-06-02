@@ -13,3 +13,15 @@ Organisms: These are Relatively more complex components made up of groups of mol
 Templates: They Provides the overall page structure by managing the Organisms into a layout.
 
 Pages: It represents the final UI that users Interact with and reveal design issues in realistic setting.
+
+The key Benefits of Atomic Design includes:
+1. Reusability
+2. Consistency
+3. Maintainability
+4. Collaboration
+
+
+"12Factor App"
+
+
+
