@@ -21,7 +21,9 @@ The key Benefits of Atomic Design includes:
 4. Collaboration
 
 
-"12Factor App"
+"Twelve-Factor App"
+
+The Twelve-factor app is a set of 12 principles for building web applications, which nowadays are more commonly known as Software-As-A-Service (SAAS) applications.haaaaa
 
 
 
