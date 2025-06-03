@@ -1,4 +1,4 @@
-Atomic Design
+##Atomic Design
 
 Atomic Design is a methodology for creating design systems and user interfaces (UI) in a systematic way. The core idea is to break down the UI into fundamental building blocks and progressively combine them into more complex components culminating in full pages.
 
