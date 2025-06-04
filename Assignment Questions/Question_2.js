@@ -1,12 +1,25 @@
 // 2. Write a function to take input(age, name, phone no.) from user and display it
 
-const Name = prompt("enter Name ");
-const age = prompt("enter Age ");
-const phone = prompt("enter Phone NO. ");
+const readline = require('readline');
 
-console.log(Name + " " + age + " " + phone);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-document.getElementById("name").innerText = "Name: " + Name;
-document.getElementById("age").innerText = "Age: " + age;
-document.getElementById("phone").innerText = "Phone: " + phone;
+// Function to take input
+function getUserDetails() {
+  rl.question('Enter your name: ', (name) => {
+    rl.question('Enter your age: ', (age) => {
+      rl.question('Enter your phone number: ', (phone) => {
+        console.log(`Name: ${name}`);
+        console.log(`Age: ${age}`);
+        console.log(`Phone: ${phone}`);
+        rl.close(); 
+      });
+    });
+  });
+}
 
+// Call the function
+getUserDetails();
