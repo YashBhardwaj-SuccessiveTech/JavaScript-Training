@@ -1,18 +1,18 @@
 // 1. Write a program to perform functionality of a calculator (add,sub,multiply,divide)
 
-function calculator(n1, n2){
-    let exp = "add";
-    switch(exp){
-        case "add":
+function calculator(n1, n2,operator){
+
+    switch(operator){
+        case '+':
             console.log(n1+n2);
             break;
-        case "subtract":
+        case '-':
             console.log(n2-n1);
             break;
-        case "divide":
+        case '/':
             console.log(n1/n2);
             break;
-        case "multiply":
+        case '*':
             console.log(n1*n2);
             break;
         default:
@@ -20,4 +20,4 @@ function calculator(n1, n2){
     }
 }
 
-calculator(4,2);
+calculator(4,2,'+');
