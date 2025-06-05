@@ -2,22 +2,31 @@
 
 function calculator(n1, n2,operator){
 
+    if(isNaN(n1) || isNaN(n2)){
+        console.log("Invalid Input: One or Both values are not number");
+        return NaN;
+    }
+
     switch(operator){
         case '+':
-            console.log(n1+n2);
+            return n1+n2;
             break;
         case '-':
-            console.log(n2-n1);
+            return n1-n2;
             break;
         case '/':
-            console.log(n1/n2);
+            if(n2==0){
+                console.log("Invalid Divisor");
+                return;
+            }
+            return n1/n2;
             break;
         case '*':
-            console.log(n1*n2);
+            return n1*n2;
             break;
         default:
             console.log("choose correct option");
     }
 }
 
-calculator(4,2,'+');
+console.log(calculator(3,2,'+'));
