@@ -1,4 +1,4 @@
-// 1. Write a program to remove duplicate charecters from a string ("Hello Yellow" => "Helo Yw")Add commentMore actions
+// 1. Write a program to remove duplicate characters from a string ("Hello Yellow" => "Helo Yw")Add commentMore actions
 
 let str = "Hello Yellow";
 let set = new Set();

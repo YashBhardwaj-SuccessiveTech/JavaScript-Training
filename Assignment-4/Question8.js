@@ -1,19 +1,16 @@
-// 8. Write a program to remove dupliacte elements from an array
+// 8. Write a program to remove duplicate elements from an array
 
 function removeduplicate(arr){
-    let set = new Set();
+    let set= new Set();
+    let ans=[];
     for(let i=0;i<arr.length;i++){
         set.add(arr[i]);
     }
-    for(let i=0;i<arr.length;i++){
-        if(!set.has(arr[i])){
-            set.delete(arr[i]);
-            arr.remove(i);
-        }
+    for (const value of set) {
+        ans.push(value);
     }
-    return arr;
+    return ans;
 }
 
-let arr= [1,1,23,24,23];
-
+let arr=[1,2,3,4,1];
 console.log(removeduplicate(arr));
