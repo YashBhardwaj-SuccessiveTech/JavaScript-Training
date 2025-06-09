@@ -9,7 +9,7 @@ function findduplicate(arr){
         }else{
             ans.push(i);
         }
-    }
+    } 
     return ans;
 }
 
