@@ -17,24 +17,23 @@
 // let arr=[1,2,3,1,2];
 // lastindx(arr);
 
+const lastindx = (arr) => {
+  const map = new Map();
+  arr.forEach((element, index) => {
+    if (map.has(element)) {
+      map.set(element, index);
+    } else {
+      map.set(element, -1);
+    }
+  });
+  map.forEach((value, key) => {
+    if (value === -1) {
+      map.delete(key);
+    }
+  });
 
-const lastindx= (arr)=>{
-    const map= new Map();
-    arr.forEach((element, index)=>{
-        if(map.has(element)){
-            map.set(element, index);
-        }else{
-            map.set(element,-1);
-        }
-    });
-    map.forEach((value, key)=>{
-        if(value === -1){
-            map.delete(key);
-        }
-    });
+  return map;
+};
 
-    return map;
-}
-
-const lastindxes = lastindx([1,2,3,5,2,1,2]);
+const lastindxes = lastindx([1, 2, 3, 5, 2, 1, 2]);
 console.log(lastindxes);
