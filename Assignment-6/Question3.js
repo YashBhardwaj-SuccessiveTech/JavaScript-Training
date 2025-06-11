@@ -41,5 +41,11 @@ class Teacher extends Person {
   }
 }
 
+let person = new Person("yash", 22, "male", "chess");
+console.log(person.greeting());
+
 let st = new Student("yash", 22, "male", "chess", "maths");
 console.log(st.greeting());
+
+let teacher = new Teacher("yash", 22, "male", "chess", "maths");
+console.log(teacher.farewell());

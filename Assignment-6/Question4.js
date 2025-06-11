@@ -9,11 +9,28 @@ class Person{
         this.age = age;
     }
 
-    fullname(){
-        return `${this.firstname + this.lastname}`;
+    displayfullname(){
+        return `${this.firstname +" "+ this.lastname}`;
     }
 
-    averageAge(){
-        
+    averageAge(array){
+        let initval=0;
+        const total = array.reduce((accumulator, obj)=>accumulator + obj.age ,initval);
+        return Math.floor(total/array.length);
     }
 }
+
+const obj1 = new Person("Yash", "Bhardwaj", 21);
+const obj2 = new Person("Shreya","Sharma",22);
+const obj3= new Person("Prasuk","Jain",21);
+
+const fullname = obj1.displayfullname();
+console.log(fullname);
+
+const average = obj1.averageAge([obj1,obj2,obj3]);
+console.log(average);
+
+
+
+
+
