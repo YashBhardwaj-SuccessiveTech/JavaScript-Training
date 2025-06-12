@@ -5,17 +5,17 @@ class BankAccount {
     this.owner = owner;
   }
 
-  deposit(Money) {
-    this.balance += Money;
+  deposit(amount) {
+    this.balance += amount;
     console.log(`Money is deposited and current balance is ${this.balance}`);
   }
 
-  withdraw(Money) {
-    if (this.balance < Money) {
+  withdraw(amount) {
+    if (this.balance < amount) {
       console.log("Insufficient Balance");
       return;
     }
-    this.balance -= Money;
+    this.balance -= amount;
     console.log(`Money is withdrawn and current balance is: ${this.balance}`);
   }
 

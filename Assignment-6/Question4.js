@@ -9,7 +9,7 @@ class Person{
         this.age = age;
     }
 
-    displayfullname(){
+    displayFullName(){
         return `${this.firstname +" "+ this.lastname}`;
     }
 
@@ -24,7 +24,7 @@ const obj1 = new Person("Yash", "Bhardwaj", 21);
 const obj2 = new Person("Shreya","Sharma",22);
 const obj3= new Person("Prasuk","Jain",21);
 
-const fullname = obj1.displayfullname();
+const fullname = obj1.displayFullName();
 console.log(fullname);
 
 const average = obj1.averageAge([obj1,obj2,obj3]);

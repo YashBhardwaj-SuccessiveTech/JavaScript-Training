@@ -7,7 +7,7 @@ class Shape {
   }
 
   getArea() {
-    console.log("this will return area of the Shapes");
+    throw new Error("SOMETHING WENT WRONG");
   }
 }
 
@@ -31,5 +31,5 @@ obj.getArea();
 const obj2 = new Triangle(12, 4);
 obj2.getArea();
 
-const obj3 = new Shape();
-obj3.getArea();
+const obj3 = new Shape(1,2);
+// obj3.getArea();
