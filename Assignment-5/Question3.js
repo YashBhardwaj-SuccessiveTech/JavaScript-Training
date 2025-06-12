@@ -1,6 +1,6 @@
 // 3. Write a program to remove all the id key from array of object ({name:"John", age:27, id:1})
 
-function removekey(arr) {
+function removeKey(arr) {
   arr.forEach((val) => {
     delete val.id;
   });
@@ -13,6 +13,6 @@ const arr = [
   { name: "rishabh", age: 22, id: 4 },
 ];
 
-removekey(arr);
+removeKey(arr);
 
 console.log(arr);

@@ -1,6 +1,6 @@
 // 2. Write a program to sort an array of object on the basis of age ({name:"John", age:26})
 
-function sortedarray(obj) {
+function sortArray(obj) {
   obj.sort((a, b) => a.age - b.age);
 
   obj.forEach((val) => {
@@ -14,4 +14,4 @@ const obj = [
   { name: "Radhika", age: 19 },
 ];
 
-sortedarray(obj);
+sortArray(obj);
