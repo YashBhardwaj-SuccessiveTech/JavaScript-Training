@@ -13,7 +13,7 @@ class Person{
         return `${this.firstname +" "+ this.lastname}`;
     }
 
-    averageAge(array){
+    static averageAge(array){
         let initval=0;
         const total = array.reduce((accumulator, obj)=>accumulator + obj.age ,initval);
         return Math.floor(total/array.length);
@@ -27,7 +27,7 @@ const obj3= new Person("Prasuk","Jain",21);
 const fullname = obj1.displayFullName();
 console.log(fullname);
 
-const average = obj1.averageAge([obj1,obj2,obj3]);
+const average = Person.averageAge([obj1,obj2,obj3]);
 console.log(average);
 
 
