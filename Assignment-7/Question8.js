@@ -1,69 +1,43 @@
-//Q8 - Create a function that fetches data from multiple APIs in parallel and then
-//  performs some operation on the combined data, using async/await.
+//Q8. Create a function that fetches data from multiple APIs in parallel and then performs some operation on the combined data, using async/await.
 
+const url1 = "https://jsonplaceholder.typicode.com/todos/1";
+const url2 = "https://jsonplaceholder.typicode.com/todos/2";
+const url3 = "https://jsonplaceholder.typicode.com/todos/3";
 
-const obj = {
-    url1 : 'https://api.github.com/users/YashBhardwaj-SuccessiveTech',
-    url2 : 'https://api.github.com/feeds'
-}
+let promise1 = async () => {
+  const getData1 = (await fetch(url1)).json();
+  return getData1;
+};
 
+let promise2 = async () => {
+  const getData2 = (await fetch(url2)).json();
+  return getData2;
+};
 
-const fn = async (obj) => {
+let promise3 = async () => {
+  const getData2 = (await fetch(url3)).json();
+  return getData2;
+};
 
+async function operationOnAPIs() {
+  try {
+    const [first, second, third] = await Promise.all([
+      promise1(),
+      promise2(),
+      promise3(),
+    ]);
 
+    const combined = {
+      firstID: first.id,
+      secondId: second.id,
+      thirdID: third.id,
+    };
 
-    const p1 = new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        fetch(obj.url1)
-        .then((res)=>res.json())
-        .then((data)=>resolve(data))
-        .catch((error)=> reject(error))
-    },3000)
-})
-
-const p2 = new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        fetch(obj.url2)
-        .then((res)=>res.json())
-        .then((data)=>resolve(data))
-        .catch((error)=> reject(error))
-    },3000)
-})
-
-
-
-let temp_res = await Promise.all([p1,p2]);
-let ans1 = temp_res[0];
-let ans2 = temp_res[1];
-
-
-let combined = {
-    login : ans1.login,
-    id : ans1.id,
-    timeline_url : ans2.timeline_url,
-    user_url : ans2.user_url
-}
-
-return printDetails(combined);
-}
-
-function printDetails(newobj){
-
-for(let key in newobj){
-    console.log(`${key} -> ${newobj[key]}`)
-}
-return;
-}
-
-async function newFn(obj){
-try{
-   let res = await fn(obj);
-   console.log(res);
-}
-catch(error){
+    console.log("Combined Data:", combined);
+  } catch (error) {
     console.log(error);
-}
+  }
 }
 
-
-newFn(obj);
+// console.log(operationOnAPIs());
+operationOnAPIs();

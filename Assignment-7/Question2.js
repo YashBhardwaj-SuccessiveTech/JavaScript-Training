@@ -5,14 +5,14 @@ function getdata(callback){
     callback();
 }
 
-function getdata2(callback)
+function getnextdata(callback)
 {
     console.log(2);
     callback();
 }
 
 getdata(()=>
-    getdata2(()=>{
+    getnextdata(()=>{
         console.log(3);
     })
 )

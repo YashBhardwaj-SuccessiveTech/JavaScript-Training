@@ -1,54 +1,45 @@
-// 5.  Write a program to implement a Promise-based task queue, that processes tasks in a specified order, with a specified concurrency limit
+//Q5. Write a program to implement a Promise-based task queue, that processes tasks in a specified order, with a specified concurrency limit
 
-class RateLimiter {
-    constructor(limit) {
-      this.limit = limit; // Maximum number of concurrent tasks
-      this.running = 0; // Number of tasks currently running
-      this.queue = []; // Task queue (tasks waiting to be processed)
+function createTask(id) {
+  return () =>
+    new Promise((resolve) => {
+      console.log("start", id);
+      setTimeout(() => {
+        console.log("end", id);
+        resolve(id);
+      }, 1000);
+      
+    });
+}
+
+const tasks = [
+  { fn: createTask(1), priority: 3 },
+  { fn: createTask(2), priority: 4 },
+  { fn: createTask(3), priority: 1 },
+  { fn: createTask(4), priority: 2 },
+  { fn: createTask(5), priority: 5 },
+  { fn: createTask(6), priority: 10 },
+  { fn: createTask(7), priority: 6 },
+  { fn: createTask(8), priority: 7 },
+  { fn: createTask(9), priority: 8 },
+];
+
+function runPriorityTask(tasks, parallel) {
+  // tasks->array of objects{ fn=> promise, priority}
+  tasks.sort((a, b) => b.priority - a.priority); // sort according to the priority
+
+  let result = [];
+
+  async function runTasks() {
+    for (let i = 0; i < tasks.length; i += parallel) {
+      const batch = tasks.slice(i, i + parallel).map((task) => task.fn());
+      const res = await Promise.all(batch);
+      result.push(...res);
     }
-  
-    // Add a task to the rate limiter
-    addTask(task,priority) {
-      return new Promise((resolve, reject) => {
-        this.queue.push({task:() => task().then(resolve).catch(reject),priority});
-        this.queue.sort((a,b)=>a.priority-b.priority);
-        this.processQueue(); // Try to process the task
-      });
-    }
-  
-    processQueue() {
-      if (this.running >= this.limit || this.queue.length === 0) {
-        return; // If the limit is reached, or no tasks in the queue
-      }
-  
-      const nextTask = this.queue.shift();
-      this.running++; // Increment running task count
-  
-      // Execute the task
-      nextTask.task().finally(() => {
-        this.running--; 
-        this.processQueue(); 
-      });
-    }
+    return result;
   }
-  
-  const createTask = (id, time) => {
-    return () =>
-      new Promise((resolve) => {
-        console.log(`Task ${id} started`);
-        setTimeout(() => {
-          console.log(`Task ${id} finished after ${time}ms`);
-          resolve(`ask ${id} completed after ${time}ms`);
-        }, time);
-      });
-  };
-  
-  const rateLimiter = new RateLimiter(2); 
-  
-  
-  
-    rateLimiter.addTask(createTask(1, 1000),2);
-    rateLimiter.addTask(createTask(2, 1000),3);
-    rateLimiter.addTask(createTask(3, 1000),3);
-    rateLimiter.addTask(createTask(4, 1000),1);
-     // Each task takes 1 second
+
+  return runTasks();
+}
+
+runPriorityTask(tasks, 2).then((res) => console.log("Done", res));
