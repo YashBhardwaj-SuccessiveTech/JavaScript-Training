@@ -11,7 +11,7 @@ function createTask(id) {
     });
 }
 
-const task = [
+const taskList = [
   createTask(1),
   createTask(2),
   createTask(3),
@@ -37,6 +37,6 @@ async function runTasks(tasks, limit) {
   return result;
 }
 
-runTasks(task, 3).then((res) => {
+runTasks(taskList, 3).then((res) => {
   console.log("All done:", res);
 });

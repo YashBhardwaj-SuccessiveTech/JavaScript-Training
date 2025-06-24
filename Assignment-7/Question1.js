@@ -8,7 +8,7 @@ const asynchronousOperations=(url,callback)=>{
 
 }
 asynchronousOperations("https://dog.ceo/api/breeds/image/random",(data)=>{
-    if(data){
+    if(data.status=="success"){
         console.log(data);
     }
     else{

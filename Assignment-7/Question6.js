@@ -1,6 +1,6 @@
 // 6. Implement a function that returns a resolved Promise after a specified delay using async/await.
 
-function returnpromise(){
+function returnpromise(delay){
     return new Promise((resolve)=>{
         setTimeout(()=>{
             console.log("common");
@@ -10,7 +10,8 @@ function returnpromise(){
 }
 
 async function main(){
-    const result = await returnpromise();
+    const delay = 3000;
+    const result = await returnpromise(delay);
     console.log(result);
 }
 
